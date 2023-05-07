@@ -1,6 +1,7 @@
 # Trabalho HIVE
 
 Para aumentar a memória do container para o Hive não morrer, se necessário:
+
 docker update --memory=4g --memory-swap=6g hive-server (opcional)
 
 Dentro do namenode:
