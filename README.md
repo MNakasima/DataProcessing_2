@@ -109,6 +109,17 @@ INNER JOIN customer c ON so.customerid = c.customerid;
 ```
 <img src="https://user-images.githubusercontent.com/13857701/236688412-9c4078e2-d2ee-423e-8e22-3c151bcc475c.png" width=90% height=90%>
 
+- Criar uma tabela com a visão dos tipos de serviço/Aventura contratados agregados:
+```
+CREATE TABLE servico_contratados as
+SELECT p.productnumber as numero_produto,sd.orderqty as Quantidade, p.listprice as preco_unidade, sd.unitpricediscount as Desconto,
+pm.catalogdescription as Descricao
+FROM salesorderdetail sd
+INNER JOIN product p ON sd.productid = p.productid
+INNER JOIN productmodel pm ON p.productmodelid = pm.productmodelid;
+```
+<img src="https://user-images.githubusercontent.com/13857701/236691764-daf52d81-7dd9-4532-8831-f62ce140c735.png" width=90% height=90%>
+
 - Criar uma tabela com dados para seguimentação e analíse dos clients:
 ```
 CREATE TABLE analise_cliente as
