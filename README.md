@@ -137,5 +137,6 @@ INNER JOIN address a ON ca.addressid = a.addressid;
 
 # Trabalho HIVE Parte 2:
 
-
-
+```
+hadoop fs -mkdir /atividade_2/flatenned/
+```
