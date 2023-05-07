@@ -36,6 +36,8 @@ Novamente no namenode:
 chmod 777 uploadCsv_HDFS.sh
 ./uploadCsv_HDFS.sh
 ```
+![image](https://user-images.githubusercontent.com/13857701/236688544-2588fe2d-8fe1-456d-bec7-2fe61dd091f9.png)
+
 ----------------------------------------------
 Novamente no hive-server:
 
@@ -105,4 +107,14 @@ FROM salesorderhead so
 INNER JOIN salesorderdetail sd ON so.salesorderid = sd.salesorderid
 INNER JOIN customer c ON so.customerid = c.customerid;
 ```
+<img src="https://user-images.githubusercontent.com/13857701/236688412-9c4078e2-d2ee-423e-8e22-3c151bcc475c.png" width=90% height=90%>
+
+- Criar uma tabela com dados para seguimentação e analíse dos clients:
+```
+CREATE TABLE analise_cliente as
+SELECT c.salesperson as Pessoa, c.companyname as Companhia, a.city as Cidade FROM customeraddress ca
+INNER JOIN customer c ON ca.customerid = c.customerid
+INNER JOIN address a ON ca.addressid = a.addressid;
+```
+<img src="https://user-images.githubusercontent.com/13857701/236688333-08307f16-5284-43b6-b27c-44211826056a.png" width=90% height=90%>
 
