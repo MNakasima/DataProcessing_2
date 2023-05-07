@@ -1,5 +1,7 @@
 # Trabalho HIVE
 
+docker update --memory=4g --memory-swap=6g hive-server (opcional)
+
 Dentro do namenode:
 ```
 mkdir /data_processing/csv/
