@@ -129,6 +129,10 @@ INNER JOIN address a ON ca.addressid = a.addressid;
 ```
 <img src="https://user-images.githubusercontent.com/13857701/236688333-08307f16-5284-43b6-b27c-44211826056a.png" width=90% height=90%>
 
+
+![image](https://user-images.githubusercontent.com/13857701/236692480-7d104f36-ddb7-4669-934a-841fe36605e7.png)
+
+
 ----------------------------------------------
 
 # Trabalho HIVE Parte 2:
