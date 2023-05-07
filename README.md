@@ -1,4 +1,4 @@
-# Trabalho HIVE
+# Trabalho HIVE Parte 1:
 
 Para aumentar a memória do container para o Hive não morrer, se necessário:
 
@@ -128,4 +128,10 @@ INNER JOIN customer c ON ca.customerid = c.customerid
 INNER JOIN address a ON ca.addressid = a.addressid;
 ```
 <img src="https://user-images.githubusercontent.com/13857701/236688333-08307f16-5284-43b6-b27c-44211826056a.png" width=90% height=90%>
+
+----------------------------------------------
+
+# Trabalho HIVE Parte 2:
+
+
 
