@@ -175,4 +175,5 @@ Flatenned Table:
 Utilizamos as tabelas salesorderhead, salesorderdetail e product como nossos KPIs para a montagem da flatenned table, pois nelas existem informações relevants sobre os produtos assim como o preços dos produtos (preço de fabrica, preço de venda, tarifas, fretes, etc..), a quantidade comprada de cada um e características do produto.
 
 Partição:
+
 Utilizamos a cor do produto e o mês para organizar os diretórios, logo teremos uma estrutura onde podemos identificar os produtos vendidos através da cor mensalmente e acessar os detalhes do produto como os preços.
