@@ -145,12 +145,11 @@ SET hive.exec.dynamic.partition = true;
 SET hive.exec.dynamic.partition.mode = nonstrict;
 ```
 
-- Criar a flattened table com partição pelas cores do produto:
+- Criar a flattened table com partição pelas cores do produto e mês:
 ```
 CREATE TABLE flatenned_table
-(productnumber string, standardcost float, listprice float, orderqty int, shipmethod string, taxamt float, freight float, 
-modifieddate string)
-PARTITIONED BY (color string)
+(productnumber string, standardcost float, listprice float, orderqty int, shipmethod string, taxamt float, freight float)
+PARTITIONED BY (modifieddate int,color string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
 LOCATION '/atividade_2/flatenned/';
@@ -159,17 +158,21 @@ LOCATION '/atividade_2/flatenned/';
 - Inserir os dados na tabela através de um conjunto de selects nas tabelas criadas anteriormente com os registros relevantes para o monitoramento do negócio (KPIs)Ç
 ```
 INSERT INTO flatenned_table
-PARTITION(color)
-SELECT p.productnumber, p.standardcost, p.listprice, sd.orderqty, sh.shipmethod, sh.taxamt, sh.freight, p.modifieddate, 
-p.color as color
+PARTITION(modifieddate, color)
+SELECT p.productnumber, p.standardcost, p.listprice, sd.orderqty, sh.shipmethod, sh.taxamt, sh.freight,
+month(date_format(from_unixtime(unix_timestamp(p.modifieddate, 'dd-MM-yyyy')),'yyyy-MM-dd')) as modifieddate , p.color as color
 FROM salesorderhead sh
 INNER JOIN salesorderdetail sd ON sh.salesorderid = sd.salesorderid
 INNER JOIN product p ON sd.productid = p.productid;
 ```
-![image](https://user-images.githubusercontent.com/13857701/236701109-5d20987f-4d13-4ca5-9feb-49c4238b1d99.png)
+![image](https://user-images.githubusercontent.com/13857701/236702185-b31fbbe7-3c47-4d4b-93c4-bc45a29b1a3d.png)
 
 Flatenned Table:
 <img src="https://user-images.githubusercontent.com/13857701/236701194-fdb8f23b-3f2f-4109-9f43-116923f48ad8.png" width=90% height=90%>
 
 -  Justificativa das técnicas utilizadas para otimizar o modelo:
 
+Utilizamos as tabelas salesorderhead, salesorderdetail e product como nossos KPIs para a montagem da flatenned table, pois nelas existem informações relevants sobre os produtos assim como o preços dos produtos (preço de fabrica, preço de venda, tarifas, fretes, etc..), a quantidade comprada de cada um e características do produto.
+
+Partição:
+Utilizamos a cor do produto e o mês para organizar os diretórios, logo teremos uma estrutura onde podemos identificar os produtos vendidos através da cor mensalmente e acessar os detalhes do produto como os preços.
