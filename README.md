@@ -15,6 +15,9 @@ hadoop fs -mkdir /atividade_2/productmodel/
 hadoop fs -mkdir /atividade_2/productmodeldescription/
 hadoop fs -mkdir /atividade_2/salesorderdetail/
 hadoop fs -mkdir /atividade_2/salesorderhead/
+
+hadoop fs -mkdir /atividade_2/servico_aventura
+hadoop fs -mkdir /atividade_2/segmentacao_cliente
 ```
 ----------------------------------------------
 Dentro do hive-server:
